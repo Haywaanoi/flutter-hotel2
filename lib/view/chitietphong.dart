@@ -7,10 +7,13 @@ import 'package:test_hotel/ip.dart';
 import 'package:test_hotel/view/formDatPhong.dart';
 import '../LoaiPhong.dart';
 import 'homePage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class Chitiet extends StatelessWidget {
  final LoaiPhong loaiphong;
+  Chitiet({super.key, required this.loaiphong, ngay});
 
-  const Chitiet({super.key, required this.loaiphong});
+
 
  @override
  Widget build(BuildContext context) {
@@ -223,68 +226,26 @@ class Chitiet extends StatelessWidget {
                                      borderRadius: BorderRadius.all(Radius.circular(14))),
                                  height: 50,
                                  width: 200,
-                                 child:  TextButton(
-                                   onPressed: ()  {
-                                     showDialog(context: context,
-                                         builder: (context)=>  AlertDialog(
-                                           content: Stack(
-                                             clipBehavior: Clip.none,
-                                             children: <Widget>[
-                                               Positioned(
-                                                 right: -20,
-                                                 top: -40,
-                                                 child: InkResponse(
-                                                   onTap: () {
-                                                     Navigator.of(context).pop();
-                                                   },
-                                                   child: const CircleAvatar(
-                                                     backgroundColor: Colors.red,
-                                                     child: Icon(Icons.close),
-                                                   ),
-                                                 ),
-                                               ),
-                                               Form(
-                                                 child: Column(
 
-                                                   mainAxisSize: MainAxisSize.min,
-                                                   children: <Widget>[
-                                                     Padding(padding:  EdgeInsets.all(8),
-                                                       child:  Text("SONA Hotel Booking Form", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                                     ),
-                                                     Padding(padding: EdgeInsets.all(8.0),
-                                                       child: Text("Room type: " + loaiphong.tenLoaiPhong,),
-                                                     ),
-                                                     Container(padding: EdgeInsets.all(8.0),
-                                                       child: Text("Price: " + loaiphong.priceLoaiPhong),
-                                                     ),Container(padding: EdgeInsets.all(8.0),
-                                                       child: Text("Number of guest :"),
-                                                     ),
-                                                     TextFormField(
-                                                       keyboardType: TextInputType.number,
-                                                       inputFormatters: [
-                                                         FilteringTextInputFormatter.allow(RegExp(r'^[0-3]?$')),
-                                                       ], // Các thuộc tính khác của TextFormField
-                                                     )
-                                                     
-                                                   ],
-                                                 ),
-
-
-
-                                               )
-                                             ],
-                                           ),
-                                         ));
-                                   },
-                                   child:  Text(
-                                     "BOOK THIS HOTEL",
-                                     style: TextStyle(
-                                         color: Colors.white,
-                                         fontWeight: FontWeight.bold,
-                                         fontSize: 16),
-                                   ),
+                                   child:  TextButton(
+                                     onPressed: () {
+                                       Navigator.push(
+                                           context,
+                                           MaterialPageRoute(
+                                               builder: (context) => DatPhongForm(loai: loaiphong,)
+                                           )
+                                       );
+                                     },
+                                     child: Text(
+                                       "BOOK THIS HOTEL",
+                                       style: TextStyle(
+                                           color: Colors.white,
+                                           fontWeight: FontWeight.bold,
+                                           fontSize: 16),
+                                     ),
+                                   )
                                  )
-                             ),
+
                            ],
                          ),
                        ))
@@ -300,3 +261,57 @@ class Chitiet extends StatelessWidget {
 }
 
 
+//
+//
+// child:  TextButton(
+// onPressed: ()  {
+// showDialog(context: context,
+// builder: (context)=>  AlertDialog(
+// content: Stack(
+// clipBehavior: Clip.none,
+// children: <Widget>[
+// Positioned(
+// right: -20,
+// top: -40,
+// child: InkResponse(
+// onTap: () {
+// Navigator.of(context).pop();
+// },
+// child: const CircleAvatar(
+// backgroundColor: Colors.red,
+// child: Icon(Icons.close),
+// ),
+// ),
+// ),
+// Form(
+// child: Column(
+//
+// mainAxisSize: MainAxisSize.min,
+// children: <Widget>[
+// Padding(padding:  EdgeInsets.all(8),
+// child:  Text("SONA Hotel Booking Form", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+// ),
+// Padding(padding: EdgeInsets.all(8.0),
+// child: Text("Room type: " + loaiphong.tenLoaiPhong,),
+// ),
+// Container(padding: EdgeInsets.all(8.0),
+// child: Text("Price: " + loaiphong.priceLoaiPhong),
+// ),Container(padding: EdgeInsets.all(8.0),
+// child: Text("Number of guest :"),
+// ),
+// ListTile(
+// title: Text('Ngày đến: '),
+// trailing: NgayDen(onDatePicked: _handleDatePicked)
+// ),
+// // Các thuộc tính khác của TextFormField
+//
+// ],
+// ),
+//
+//
+//
+// )
+// ],
+// ),
+// ));
+// },

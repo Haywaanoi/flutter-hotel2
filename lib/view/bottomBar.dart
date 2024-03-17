@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_hotel/view/userprofile.dart';
+import 'package:test_hotel/view/MyRoom.dart';
 import 'homePage.dart';
-import 'loginform.dart';
 class NavigationMenu extends StatelessWidget{
   const NavigationMenu({super.key, });
   @override
@@ -30,9 +29,10 @@ class NavigationMenu extends StatelessWidget{
 }
 
 
+
 class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [const HomePage(),Container(color: Colors.blue),Container(color: Colors.purple),LoginForm()];
+  final screens = [const HomePage(),Container(color: Colors.blue),const MyRoom(),Container(color: Colors.orangeAccent)];
 
 }
