@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:test_hotel/view/formDatPhong.dart';
 
 import 'LoaiPhong.dart';
 import 'view/bottomBar.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Lab 8 on tap'),
+      home: const DatPhongForm(),
     );
   }
 }
