@@ -20,7 +20,10 @@ class UserInfo extends StatelessWidget {
           children: [
             Text('Hello, $username!'),
             ElevatedButton(
-              onPressed: onLogout,
+              onPressed: () {
+                // Thực hiện điều hướng trở lại trang đăng nhập khi bấm nút "Logout"
+                Navigator.of(context).pop();
+              },
               child: Text('Logout'),
             ),
           ],

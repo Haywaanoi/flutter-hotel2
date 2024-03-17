@@ -16,6 +16,11 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    void _logout() {
+      // Điều hướng về trang đăng nhập
+      Navigator.pop(context);
+    }
+
     Future<void> _login(String username) async {
       final String password = _passwordController.text;
 
@@ -34,7 +39,9 @@ class _LoginFormState extends State<LoginForm> {
         if (response.statusCode == 200) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => UserInfo(username: username, onLogout: () {  },)),
+            MaterialPageRoute(builder: (context) => UserInfo(username: username, onLogout: () {
+              _logout();
+            },)),
           );
         } else {
           // Show error message
