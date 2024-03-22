@@ -13,7 +13,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, });
 
   // This widget is the root of your application.
   @override
@@ -24,28 +24,28 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: NavigationMenu(),
+      home: const NavigationMenu(username: "",),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => MyHomePageState();
-}
-
-class MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: NavigationMenu());
-  }
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
+//
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => MyHomePageState();
+// }
+//
+// class MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         home: NavigationMenu(username: ,));
+//   }
   
 
 
-}
+//}
