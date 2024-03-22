@@ -181,11 +181,7 @@ class PostDataButton extends StatelessWidget {
                   TextButton(
                     child: const Text('OK'),
                     onPressed: () {
-                    Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                          builder: (context) => NavigationMenu(),)
-                      ); // Dismiss the dialog
+                      Navigator.of(context).pop();
                     },
                   ),
                 ],

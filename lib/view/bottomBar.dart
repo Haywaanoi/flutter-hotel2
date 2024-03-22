@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_hotel/view/MyRoom.dart';
+import 'package:test_hotel/view/loginform.dart';
+import 'package:test_hotel/view/userprofile.dart';
 import 'homePage.dart';
 class NavigationMenu extends StatelessWidget{
-  const NavigationMenu({super.key, });
+  final String username;
+  const NavigationMenu({super.key, required this.username,});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final controller = Get.put(NavigationController(username: username));
     return Scaffold(
       bottomNavigationBar: Obx(() =>  NavigationBar(
         height: 80,
@@ -28,11 +31,27 @@ class NavigationMenu extends StatelessWidget{
 
 }
 
-
-
-class NavigationController extends GetxController{
+class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
+  final List<Widget> screens;
+  final String username;
 
-  final screens = [const HomePage(),Container(color: Colors.blue),const MyRoom(),Container(color: Colors.orangeAccent)];
+  NavigationController({required this.username}) : screens = [
+    const HomePage(),
+    Container(color: Colors.blue),
+    const MyRoom(),
+    username.trim().isEmpty ? const LoginForm() : UserInfo(username: username),
+  ] {
+    // Kiểm tra và in ra giá trị của username khi NavigationController được khởi tạo
+    _checkUsername();
+  }
 
+  // Phương thức kiểm tra giá trị của username
+  void _checkUsername() {
+    if (username.trim().isEmpty) {
+      print('Username is empty');
+    } else {
+      print('Username: $username');
+    }
+  }
 }

@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:test_hotel/ip.dart';
+import 'package:test_hotel/main.dart';
+import 'package:test_hotel/view/bottomBar.dart';
 import 'package:test_hotel/view/userprofile.dart';
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -39,8 +43,8 @@ class _LoginFormState extends State<LoginForm> {
         if (response.statusCode == 200) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => UserInfo(username: username)),
-          );
+            MaterialPageRoute(builder: (context) => NavigationMenu(username: username),
+          ));
         } else {
           // Show error message
           showDialog(
